@@ -2,25 +2,26 @@
 
 export default {
     props: {
-        singleMovie : Array
+        singleMovie : Object
     }
 }
 </script>
 
 <template>
-    <div>
-        <ul>
-            <li v-for="(movieObject, i) in singleMovie.results">
-            <p>{{ movieObject.title }}</p>
-            <!-- <p>{{ movieObject.original_title }}</p> -->
-            <!-- <p>{{ movieObject.original_language }}</p> -->
-            <!-- <p>{{ movieObject.vote_average }}</p> -->
-            </li>
-        </ul>
+    <div class="card">
+            <p>Titolo film: {{ singleMovie.title }}</p>
+            <p>Titolo originale: {{ singleMovie.original_title }}</p>
+            <p>Lingua: {{ singleMovie.original_language }}</p>
+            <p>Voto: {{ singleMovie.vote_average }}</p>
+ 
     </div>
 
 </template>
 
 <style lang="scss">
-
+.card{
+    border-radius: 25px;
+    border: 1px solid black;
+    padding: 15px;
+}
 </style>
