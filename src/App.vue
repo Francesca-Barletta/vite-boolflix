@@ -9,7 +9,12 @@ import AppCard from './components/AppCard.vue'
     },
     data() {
       return {
-        store: store
+        store: store,
+        // flags: {
+        //   it: 'italia.png',
+        //   en: 'inghilterra.png',
+        //   fr: 'francia.png'
+        // }
       }
     },
   methods: {
