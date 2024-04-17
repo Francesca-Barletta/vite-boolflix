@@ -14,7 +14,7 @@ export default {
 </script>
 
 <template>
-    <div>
+    <div class="serie">
         <h2>Serie</h2>
         <ul class="card-wrapper">
             <li v-for="(serie, i) in store.tvSeries" :key="i" class="card-wrapper">

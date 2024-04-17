@@ -25,8 +25,8 @@ export default{
           .then((res)=>{
             
             const data = res.data;
+            console.log(data.results)
             const results = data.results;
-            console.log(results)
             this.store.tvSeries = results;
           })
       }

@@ -13,24 +13,33 @@ export default {
 </script>
 
 <template>
-   
-        <!-- <div v-if="singleItem = movie" class="card"> -->
-        <div class="card">
-            <!-- <p v-if="singleItem = movie">{{ singleItem.title }}</p> -->
-            <p>{{ singleItem.name }}</p>
+
+    <!-- <div v-if="singleItem = movie" class="card"> -->
+    <div class="card">
+        <ul  v-if="singleItem !== movie">
+            <li><p>{{ singleItem.name }}</p></li>
             <!-- <p v-if="singleItem = movie">{{ singleItem.original_title }}</p> -->
-            <p>{{ singleItem.original_name }}</p>
-            <img :src="singleItem.original_language +'.png'" alt="">
-            <p>{{ singleItem.vote_average }}</p>
-        </div>
-        <!-- <div v-else-if="singleItem = serie" class="card">
+            <li><p>{{ singleItem.original_name }}</p></li>
+      
+        </ul>
+        <ul>
+            <li><p>{{ singleItem.title }}</p></li>
+            <!-- <p v-if="singleItem = movie">{{ singleItem.original_title }}</p> -->
+            <li><p>{{ singleItem.original_title }}</p></li>
+            <li><img :src="singleItem.original_language + '.png'" alt=""></li>
+            <li><p>{{ singleItem.vote_average }}</p></li>
+        </ul>
+ 
+      
+    </div>
+    <!-- <div v-else-if="singleItem = serie" class="card">
             <p>Titolo: {{ singleItem.name }}</p>
             <p>Titolo originale: {{ singleItem.original_name }}</p>
             <span>Lingua:</span>
             <img :src="singleItem.original_language +'.png'" alt="">
             <p>Voto: {{ singleItem.vote_average }}</p>
         </div> -->
-    
+
 
 
 </template>
