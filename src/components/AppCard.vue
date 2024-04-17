@@ -3,14 +3,42 @@
 export default {
     data() {
         return {
-
+            ratingString:'',
+            allStars
         }
     },
     props: {
         singleItem: Object,
+        
+
     },
     methods:{
+        // vote(singleItem){
+        //     let rating = (parseInt(this.singleItem.vote_average)/2);
+        //     console.log(rating);
+        // }
+        rating(){
+        const rating = (parseInt(this.singleItem.vote_average)/2);
+        console.log(rating);
+        //itero sul voto
+        for (let i = 1; i <= rating; i++) {
+            //per ogni num del voto mette un *
+            this.ratingString += '*' ;
+        }
+        },
+        stars(){
+            this.allStars = this.ratingString.split('')
+            for(lei i = 1; i < this.allStars.length; i++){
+                if(this.allStars.length < 5){
+                    this.allStars.push('o')
+                }
+            }
 
+        }
+    },
+    created() {
+        this.rating(),
+        this.stars()
     }
 }
 </script>
@@ -31,7 +59,11 @@ export default {
             <li><p>{{ singleItem.original_title }}</p></li>
             <li><img :src="singleItem.original_language + '.png'" alt=""></li>
             <li><img class="poster" :src=" 'https://image.tmdb.org/t/p/w342/' + singleItem.poster_path" alt=""></li>
-            <li><p>{{ singleItem.vote_average }}</p></li>
+            <li>
+                <div>
+                    <span>{{ ratingString }}</span>
+                </div>
+            </li>
         </ul>
  
       
