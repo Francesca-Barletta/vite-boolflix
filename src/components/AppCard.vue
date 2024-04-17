@@ -3,8 +3,8 @@
 export default {
     data() {
         return {
-            ratingString:'',
-            allStars
+            rating: [],
+            newRating: ''
         }
     },
     props: {
@@ -17,28 +17,36 @@ export default {
         //     let rating = (parseInt(this.singleItem.vote_average)/2);
         //     console.log(rating);
         // }
-        rating(){
-        const rating = (parseInt(this.singleItem.vote_average)/2);
-        console.log(rating);
+        ratingFunction(){
+        const rate = (parseInt(this.singleItem.vote_average)/2).toFixed(0);
+        // console.log(rate);
         //itero sul voto
-        for (let i = 1; i <= rating; i++) {
+        for (let i = 1; i <= rate; i++) {
             //per ogni num del voto mette un *
-            this.ratingString += '*' ;
-        }
-        },
-        stars(){
-            this.allStars = this.ratingString.split('')
-            for(lei i = 1; i < this.allStars.length; i++){
-                if(this.allStars.length < 5){
-                    this.allStars.push('o')
-                }
-            }
+            this.rating.push('*');
+            // console.log(this.rating.length)
+            // this.newRating = this.rating.join('')
 
+        } 
+        console.log(rate, this.rating.length)
+        while(this.rating.length < 5){
+            this.rating.push('o');
         }
+        this.newRating = this.rating.join('')
+        // console.log(rate, this.rating)
+        },
+        // stars(){
+        //     this.ratingString.split('')
+        //     for(let i = 1; i < this.ratingString.length; i++){
+        //         if(this.ratingString.length < 5){
+        //             this.ratingString.push('o')
+        //         }
+        //     }
+
+        // }
     },
     created() {
-        this.rating(),
-        this.stars()
+        this.ratingFunction()
     }
 }
 </script>
@@ -61,7 +69,7 @@ export default {
             <li><img class="poster" :src=" 'https://image.tmdb.org/t/p/w342/' + singleItem.poster_path" alt=""></li>
             <li>
                 <div>
-                    <span>{{ ratingString }}</span>
+                    <span>{{newRating }}</span>
                 </div>
             </li>
         </ul>
