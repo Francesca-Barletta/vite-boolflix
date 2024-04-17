@@ -8,6 +8,9 @@ export default {
     },
     props: {
         singleItem: Object,
+    },
+    methods:{
+
     }
 }
 </script>
@@ -27,6 +30,7 @@ export default {
             <!-- <p v-if="singleItem = movie">{{ singleItem.original_title }}</p> -->
             <li><p>{{ singleItem.original_title }}</p></li>
             <li><img :src="singleItem.original_language + '.png'" alt=""></li>
+            <li><img class="poster" :src=" 'https://image.tmdb.org/t/p/w342/' + singleItem.poster_path" alt=""></li>
             <li><p>{{ singleItem.vote_average }}</p></li>
         </ul>
  
@@ -59,5 +63,8 @@ img{
 }
 .serie{
     background-color: darkmagenta;
+}
+img.poster{
+width: 70px;
 }
 </style>
