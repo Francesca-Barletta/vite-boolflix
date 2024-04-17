@@ -7,20 +7,31 @@ export default {
         }
     },
     props: {
-        singleMovie: Object
+        singleItem: Object,
     }
 }
 </script>
 
 <template>
-    <div class="card">
-            <p>Titolo film: {{ singleMovie.title }}</p>
-            <p>Titolo originale: {{ singleMovie.original_title }}</p>
+   
+        <!-- <div v-if="singleItem = movie" class="card"> -->
+        <div class="card">
+            <!-- <p v-if="singleItem = movie">{{ singleItem.title }}</p> -->
+            <p>{{ singleItem.name }}</p>
+            <!-- <p v-if="singleItem = movie">{{ singleItem.original_title }}</p> -->
+            <p>{{ singleItem.original_name }}</p>
+            <img :src="singleItem.original_language +'.png'" alt="">
+            <p>{{ singleItem.vote_average }}</p>
+        </div>
+        <!-- <div v-else-if="singleItem = serie" class="card">
+            <p>Titolo: {{ singleItem.name }}</p>
+            <p>Titolo originale: {{ singleItem.original_name }}</p>
             <span>Lingua:</span>
-            <img :src="singleMovie.original_language +'.png'" alt="">
-            <p>Voto: {{ singleMovie.vote_average }}</p>
- 
-    </div>
+            <img :src="singleItem.original_language +'.png'" alt="">
+            <p>Voto: {{ singleItem.vote_average }}</p>
+        </div> -->
+    
+
 
 </template>
 
@@ -29,8 +40,15 @@ export default {
     border-radius: 25px;
     border: 1px solid black;
     padding: 15px;
+    background-color: white;
 }
 img{
     width: 20px;
+}
+.movie{
+    background-color: blueviolet;
+}
+.serie{
+    background-color: darkmagenta;
 }
 </style>
