@@ -14,35 +14,32 @@ export default {
 </script>
 
 <template>
-    <div class="serie">
-<h2>serie</h2>
-        <ul class="card-wrapper">
-            <li v-for="(serie, i) in store.tvSeries" :key="i" class="card-wrapper">
-                <AppCard :singleItem="serie" />
-            </li>
-        </ul>
+  <div class="serie">
+    <div class="row">
+        <AppCard v-for="(serie, i) in store.tvSeries" :key="i" :singleItem="serie" />
     </div>
 
-
+  </div>
 </template>
 
 <style lang="scss" scoped>
 .serie {
-  h2 {
-    margin: 20px;
-    font-size: 35px;
-  }
-
-  padding: 20px;
-  background-color: rgb(32, 32, 32);
-  color: white;
-  text-align: center;
+  background-color: black;
+  padding-top: 5vh;
 }
-.card-wrapper{
+.row{
+  width: 100%;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  gap: 12px;
+  row-gap: 3vh;
+}
+.col-6{
+  width: 19%;
+  margin: 5px;
+}
+.none{
+  display: none;
 }
 </style>

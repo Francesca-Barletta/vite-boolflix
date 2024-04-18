@@ -14,32 +14,30 @@ export default {
 </script>
 <template>
 
-    <div class="movie">
-        <ul class="card-wrapper">
-            <li v-for="(movie, i) in store.movies" :key="i" class="card-wrapper">
-                <AppCard :singleItem="movie" />
-            </li>
-        </ul>
+  <div class="movie">
+    <div class="row">
+        <AppCard  v-for="(movie, i) in store.movies" :key="i" :singleItem="movie"/>
     </div>
+
+  </div>
 </template>
 
 <style lang="scss" scoped>
 .movie {
-  h2 {
-    margin: 20px;
-    font-size: 35px;
-  }
-
-  padding: 20px;
-  background-color: rgb(32, 32, 32);
-  color: white;
-  text-align: center;
+  background-color: black;
+  padding-top: 5vh;
 }
-.card-wrapper{
+.row{
+  width: 100%;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  gap: 12px;
+  row-gap: 3vh;
 }
+.col-6{
+  width: 19%;
+  margin: 5px;
+}
+
 </style>

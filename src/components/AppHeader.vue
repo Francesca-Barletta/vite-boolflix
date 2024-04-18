@@ -36,7 +36,7 @@ export default{
 }
 </script>
 <template>
-    <div class="container">
+    <div class="header-container">
         <h1>Boolflix</h1>
         <div>
             <input type="text" placeholder="inserisci film o serie-tv" v-model.trim="store.userValue" @keyup.enter="search">
@@ -47,8 +47,8 @@ export default{
 
 </template>
 
-<style lang="scss">
-.container{
+<style lang="scss" scoped>
+.header-container{
     h1{
         color: red;
         font-size: 50px;
@@ -56,9 +56,10 @@ export default{
   margin: 0 auto;
   text-align: center;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
   background-color: black;
   padding: 30px;
+  width: 90%;
 }
 </style>
