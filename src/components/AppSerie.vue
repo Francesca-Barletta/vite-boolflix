@@ -26,6 +26,7 @@ export default {
 .serie {
   background-color: black;
   padding-top: 5vh;
+  margin-bottom: 5vh;
 }
 .row{
   width: 100%;
@@ -35,11 +36,5 @@ export default {
   align-items: center;
   row-gap: 3vh;
 }
-.col-6{
-  width: 19%;
-  margin: 5px;
-}
-.none{
-  display: none;
-}
+
 </style>

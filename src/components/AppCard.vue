@@ -38,9 +38,9 @@ export default {
 
 <template>
 
-  <div :class="singleItem.poster_path !== null ? 'col-6':'none'">
+  <div :class="singleItem.poster_path !== null ? 'col-10':'none'">
     <div class="card">
-        <h2 class="logo">B</h2>
+        <img class="logo" src="/logo.png" alt="">
         <img  class="poster" :src="'https://image.tmdb.org/t/p/w342/' + singleItem.poster_path" alt="">
         <div class="overlay">
             <ul>
@@ -62,8 +62,9 @@ export default {
                     <span v-for="white in whiteStar">
                         <font-awesome-icon :icon="['far', 'star']" />
                     </span>
-                    <span><img class="flag" :src="singleItem.original_language + '.png'" alt=""></span>
                 </li>
+                <li><img class="flag" :src="singleItem.original_language + '.png'" alt=""></li>
+                
                 <li>
                     <p>Overview:{{ singleItem.overview }}</p>
                 </li>
@@ -86,7 +87,7 @@ export default {
     position: relative;
     cursor: pointer;
     border-radius: 3px;
-
+    overflow: hidden;
     &:hover .overlay{
         opacity: 1;
         transition: opacity 300ms ease-in-out;
@@ -104,15 +105,13 @@ export default {
     display: none;
 }
 .logo{
-    color: red;
     position: absolute;
-    font-size: 35px;
-    text-shadow: 3px 2px 5px black;
+    width: 16px;
     top: 10px;
     left: 10px;
 }
 .flag{
-    width: 30px;
+    width: 20px;
 }
 .movie{
     background-color: blueviolet;
@@ -127,7 +126,7 @@ export default {
 .overlay{
     position:absolute;
     top: 0;
-    bottom: 3px;
+    bottom: 0;
     left: 0;
     right: 0;
     background-color: black;
@@ -135,7 +134,6 @@ export default {
     padding: 5px;
     border-radius: 4px;
     opacity: 0;
-    text-overflow: clip;
 }
 .poster{
     width: 100%;
@@ -147,8 +145,8 @@ export default {
 .none{
     display: none;
 }
-.col-6{
-  width: 19%;
+.col-10{
+  width: 9%;
   margin: 5px;
 }
 </style>

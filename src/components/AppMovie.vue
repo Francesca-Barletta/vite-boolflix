@@ -26,6 +26,7 @@ export default {
 .movie {
   background-color: black;
   padding-top: 5vh;
+  margin-left: auto;
 }
 .row{
   width: 100%;
@@ -34,10 +35,6 @@ export default {
   justify-content: center;
   align-items: center;
   row-gap: 3vh;
-}
-.col-6{
-  width: 19%;
-  margin: 5px;
 }
 
 </style>

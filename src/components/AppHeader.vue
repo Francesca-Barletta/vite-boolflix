@@ -37,10 +37,10 @@ export default{
 </script>
 <template>
     <div class="header-container">
-        <h1>Boolflix</h1>
-        <div>
-            <input type="text" placeholder="inserisci film o serie-tv" v-model.trim="store.userValue" @keyup.enter="search">
-            <!-- <button @click="search">cerca</button> -->
+        <img class="logo" src="/boolflix.png" alt="">
+        <div class="search">   
+            <input class="input-search" type="text" placeholder="inserisci film o serie-tv" v-model.trim="store.userValue" @keyup.enter="search">
+            <font-awesome-icon class="icon" :icon="['fas', 'magnifying-glass']" />
         </div>
 
     </div>
@@ -49,10 +49,6 @@ export default{
 
 <style lang="scss" scoped>
 .header-container{
-    h1{
-        color: red;
-        font-size: 50px;
-    }
   margin: 0 auto;
   text-align: center;
   display: flex;
@@ -61,5 +57,38 @@ export default{
   background-color: black;
   padding: 30px;
   width: 90%;
+}
+.logo{
+  width:250px;
+}
+.icon{
+  color: white;
+  position: absolute;
+  top: 50%;
+  left: 20px;
+  transform: translateY(-50%);
+  pointer-events:none;
+}
+.search{
+  position: relative;
+}
+.input-search{
+  outline: none;
+  border: none;
+  background-color: grey;
+  width: 300px;
+  height: 30px;
+  padding-left: 50px;
+  padding-right: 10px;
+  caret-color: white;
+  color: white;
+  &::placeholder{
+    color: white;
+  }
+  
+
+  &:focus-visible{
+  outline: none;
+}
 }
 </style>
