@@ -15,7 +15,6 @@ export default {
 <template>
 
     <div class="movie">
-      <h2>Movie</h2>
         <ul class="card-wrapper">
             <li v-for="(movie, i) in store.movies" :key="i" class="card-wrapper">
                 <AppCard :singleItem="movie" />

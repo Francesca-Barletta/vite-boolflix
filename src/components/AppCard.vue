@@ -1,10 +1,11 @@
 <script>
+import { store } from '../store.js'
 
 export default {
     data() {
         return {
+            store: store,
             rating: [],
-  
             whiteStar: ['+', '+', '+', '+', '+']
         }
     },
@@ -17,7 +18,7 @@ export default {
 
         ratingFunction() {
             const rate = (parseInt(this.singleItem.vote_average) / 2).toFixed(0);
-            console.log(rate);
+            // console.log(rate);
             // itero sul voto
             for (let i = 1; i <= rate; i++) {
                 this.rating.push('+');
@@ -25,7 +26,7 @@ export default {
         },
         stars(i) {
             this.whiteStar.splice(i, this.rating.length);
-            console.log(this.whiteStar.length)
+            // console.log(this.whiteStar.length)
         }
     },
     created() {
@@ -37,21 +38,27 @@ export default {
 
 <template>
 
-    <!-- <div v-if="singleItem = movie" class="card"> -->
+       
+   
     <div class="card">
-        <ul  v-if="singleItem !== movie">
-            <li><p>{{ singleItem.name }}</p></li>
-            
-            <li><p>{{ singleItem.original_name }}</p></li>
-      
-        </ul>
         <ul>
-            <li><p>{{ singleItem.title }}</p></li>
+            <li>
+                <p v-if="singleItem.name">Titolo:{{ singleItem.name }}</p>
+                <p v-else>Titolo:{{ singleItem.title }}</p>
+            </li>
+            
+            <li>
+                <p v-if="singleItem.original_name">Titolo originale:{{ singleItem.original_name }}</p>
+                <p v-else>Titolo originale:{{ singleItem.original_title }}</p>
+            </li>
+            <!-- <li class="hover-card"><img class="poster" :src=" 'https://image.tmdb.org/t/p/w342/' + singleItem.poster_path" alt=""></li> -->
+            <!-- <li><p>Titolo:{{ singleItem.title }}</p></li> -->
           
-            <li><p>{{ singleItem.original_title }}</p></li>
-            <li><img :src="singleItem.original_language + '.png'" alt=""></li>
-            <li><img class="poster" :src=" 'https://image.tmdb.org/t/p/w342/' + singleItem.poster_path" alt=""></li>
+            <!-- <li><p>Titolo originale:{{ singleItem.original_title }}</p></li> -->
+            <li><img class="flag" :src="singleItem.original_language + '.png'" alt=""></li>
+            <!-- <li><img class="poster" :src=" 'https://image.tmdb.org/t/p/w342/' + singleItem.poster_path" alt=""></li> -->
             <li id="stars">
+                <span>Voto:</span>
                 <span v-for="icon in rating">
                     <font-awesome-icon :icon="['fas', 'star']" />
                 </span>
@@ -59,6 +66,7 @@ export default {
                     <font-awesome-icon :icon="['far', 'star']" />
                 </span>
             </li>
+            <li><p>Overview:{{ singleItem.overview }}</p></li>
         </ul>
  
       
@@ -71,7 +79,7 @@ export default {
 
 <style lang="scss" scoped>
 .card{
-    width: 200px;
+    width: 342px;
     aspect-ratio: 1/2;
     color: white;
     border: 2px solid white;
@@ -93,7 +101,7 @@ export default {
 li*>{
     padding: 5px;
 }
-img{
+.flag{
     width: 30px;
 }
 .movie{
@@ -105,7 +113,7 @@ img{
 #stars{
     flex-direction: row;
 }
-img.poster{
-width: 120px;
+.poster{
+    border: 2px solid white;
 }
 </style>

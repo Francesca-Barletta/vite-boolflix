@@ -39,8 +39,8 @@ export default{
     <div class="container">
         <h1>Boolflix</h1>
         <div>
-            <input type="text" placeholder="inserisci film o serie-tv" v-model.trim="store.userValue">
-            <button @click="search">cerca</button>
+            <input type="text" placeholder="inserisci film o serie-tv" v-model.trim="store.userValue" @keyup.enter="search">
+            <!-- <button @click="search">cerca</button> -->
         </div>
 
     </div>

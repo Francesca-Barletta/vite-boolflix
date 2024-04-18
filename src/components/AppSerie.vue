@@ -15,7 +15,7 @@ export default {
 
 <template>
     <div class="serie">
-        <h2>Serie</h2>
+<h2>serie</h2>
         <ul class="card-wrapper">
             <li v-for="(serie, i) in store.tvSeries" :key="i" class="card-wrapper">
                 <AppCard :singleItem="serie" />
