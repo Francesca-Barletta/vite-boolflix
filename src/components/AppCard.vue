@@ -89,6 +89,7 @@ export default {
 
     &:hover .overlay{
         opacity: 1;
+        transition: opacity 300ms ease-in-out;
     }
     
 
