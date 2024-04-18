@@ -4,49 +4,33 @@ export default {
     data() {
         return {
             rating: [],
-            newRating: ''
+  
+            whiteStar: ['+', '+', '+', '+', '+']
         }
     },
     props: {
         singleItem: Object,
-        
+
 
     },
-    methods:{
-        // vote(singleItem){
-        //     let rating = (parseInt(this.singleItem.vote_average)/2);
-        //     console.log(rating);
-        // }
-        ratingFunction(){
-        const rate = (parseInt(this.singleItem.vote_average)/2).toFixed(0);
-        // console.log(rate);
-        //itero sul voto
-        for (let i = 1; i <= rate; i++) {
-            //per ogni num del voto mette un *
-            this.rating.push('*');
-            // console.log(this.rating.length)
-            // this.newRating = this.rating.join('')
+    methods: {
 
-        } 
-        console.log(rate, this.rating.length)
-        while(this.rating.length < 5){
-            this.rating.push('o');
-        }
-        this.newRating = this.rating.join('')
-        // console.log(rate, this.rating)
+        ratingFunction() {
+            const rate = (parseInt(this.singleItem.vote_average) / 2).toFixed(0);
+            console.log(rate);
+            // itero sul voto
+            for (let i = 1; i <= rate; i++) {
+                this.rating.push('+');
+            }
         },
-        // stars(){
-        //     this.ratingString.split('')
-        //     for(let i = 1; i < this.ratingString.length; i++){
-        //         if(this.ratingString.length < 5){
-        //             this.ratingString.push('o')
-        //         }
-        //     }
-
-        // }
+        stars(i) {
+            this.whiteStar.splice(i, this.rating.length);
+            console.log(this.whiteStar.length)
+        }
     },
     created() {
-        this.ratingFunction()
+        this.ratingFunction(),
+            this.stars()
     }
 }
 </script>
@@ -57,32 +41,29 @@ export default {
     <div class="card">
         <ul  v-if="singleItem !== movie">
             <li><p>{{ singleItem.name }}</p></li>
-            <!-- <p v-if="singleItem = movie">{{ singleItem.original_title }}</p> -->
+            
             <li><p>{{ singleItem.original_name }}</p></li>
       
         </ul>
         <ul>
             <li><p>{{ singleItem.title }}</p></li>
-            <!-- <p v-if="singleItem = movie">{{ singleItem.original_title }}</p> -->
+          
             <li><p>{{ singleItem.original_title }}</p></li>
             <li><img :src="singleItem.original_language + '.png'" alt=""></li>
             <li><img class="poster" :src=" 'https://image.tmdb.org/t/p/w342/' + singleItem.poster_path" alt=""></li>
-            <li>
-                <div>
-                    <span>{{newRating }}</span>
-                </div>
+            <li id="stars">
+                <span v-for="icon in rating">
+                    <font-awesome-icon :icon="['fas', 'star']" />
+                </span>
+                <span v-for="white in whiteStar">
+                    <font-awesome-icon :icon="['far', 'star']" />
+                </span>
             </li>
         </ul>
  
       
     </div>
-    <!-- <div v-else-if="singleItem = serie" class="card">
-            <p>Titolo: {{ singleItem.name }}</p>
-            <p>Titolo originale: {{ singleItem.original_name }}</p>
-            <span>Lingua:</span>
-            <img :src="singleItem.original_language +'.png'" alt="">
-            <p>Voto: {{ singleItem.vote_average }}</p>
-        </div> -->
+
 
 
 
@@ -90,13 +71,30 @@ export default {
 
 <style lang="scss" scoped>
 .card{
-    border-radius: 25px;
-    border: 1px solid black;
+    width: 200px;
+    aspect-ratio: 1/2;
+    color: white;
+    border: 2px solid white;
     padding: 15px;
-    background-color: white;
+    background-color: black;
+    
+
+    li {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+        }
+    li > *{
+    padding: 5px;
+}
+}
+li*>{
+    padding: 5px;
 }
 img{
-    width: 20px;
+    width: 30px;
 }
 .movie{
     background-color: blueviolet;
@@ -104,7 +102,10 @@ img{
 .serie{
     background-color: darkmagenta;
 }
+#stars{
+    flex-direction: row;
+}
 img.poster{
-width: 70px;
+width: 120px;
 }
 </style>

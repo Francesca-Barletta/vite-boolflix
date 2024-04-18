@@ -27,8 +27,16 @@ export default {
 </template>
 
 <style lang="scss" scoped>
-.serie{
-    background-color: rgb(0, 119, 255);
+.serie {
+  h2 {
+    margin: 20px;
+    font-size: 35px;
+  }
+
+  padding: 20px;
+  background-color: rgb(32, 32, 32);
+  color: white;
+  text-align: center;
 }
 .card-wrapper{
   display: flex;

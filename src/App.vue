@@ -25,9 +25,9 @@ import AppHeader from './components/AppHeader.vue'
 </script>
 <template>
   <div>
-    <div class="container">
+   
     <AppHeader/>
-    </div>
+    
     <AppMovie/>
     <AppSerie/>  
   </div>
@@ -35,9 +35,5 @@ import AppHeader from './components/AppHeader.vue'
 </template>
 
 <style lang="scss">
-.container{
-  width: 900px;
-  margin: 0 auto;
-  text-align: center;
-}
+
 </style>

@@ -37,16 +37,28 @@ export default{
 </script>
 <template>
     <div class="container">
-        <input type="text" placeholder="inserisci film o serie-tv" v-model.trim="store.userValue">
-        <button @click="search">cerca</button>
+        <h1>Boolflix</h1>
+        <div>
+            <input type="text" placeholder="inserisci film o serie-tv" v-model.trim="store.userValue">
+            <button @click="search">cerca</button>
+        </div>
+
     </div>
 
 </template>
 
-<style>
+<style lang="scss">
 .container{
-  width: 900px;
+    h1{
+        color: red;
+        font-size: 50px;
+    }
   margin: 0 auto;
   text-align: center;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: black;
+  padding: 30px;
 }
 </style>
