@@ -38,38 +38,45 @@ export default {
 
 <template>
 
-       
-   
+
+
     <div class="card">
-        <ul>
-            <li>
-                <p v-if="singleItem.name">Titolo:{{ singleItem.name }}</p>
-                <p v-else>Titolo:{{ singleItem.title }}</p>
-            </li>
-            
-            <li>
-                <p v-if="singleItem.original_name">Titolo originale:{{ singleItem.original_name }}</p>
-                <p v-else>Titolo originale:{{ singleItem.original_title }}</p>
-            </li>
-            <!-- <li class="hover-card"><img class="poster" :src=" 'https://image.tmdb.org/t/p/w342/' + singleItem.poster_path" alt=""></li> -->
-            <!-- <li><p>Titolo:{{ singleItem.title }}</p></li> -->
-          
-            <!-- <li><p>Titolo originale:{{ singleItem.original_title }}</p></li> -->
-            <li><img class="flag" :src="singleItem.original_language + '.png'" alt=""></li>
-            <!-- <li><img class="poster" :src=" 'https://image.tmdb.org/t/p/w342/' + singleItem.poster_path" alt=""></li> -->
-            <li id="stars">
-                <span>Voto:</span>
-                <span v-for="icon in rating">
-                    <font-awesome-icon :icon="['fas', 'star']" />
-                </span>
-                <span v-for="white in whiteStar">
-                    <font-awesome-icon :icon="['far', 'star']" />
-                </span>
-            </li>
-            <li><p>Overview:{{ singleItem.overview }}</p></li>
-        </ul>
- 
-      
+
+        <img class="poster" :src="'https://image.tmdb.org/t/p/w342/' + singleItem.poster_path" alt="">
+        <div class="overlay">
+            <ul>
+                <li>
+                    <p v-if="singleItem.name">Titolo:{{ singleItem.name }}</p>
+                    <p v-else>Titolo:{{ singleItem.title }}</p>
+                </li>
+
+                <li>
+                    <p v-if="singleItem.original_name">Titolo originale:{{ singleItem.original_name }}</p>
+                    <p v-else>Titolo originale:{{ singleItem.original_title }}</p>
+                </li>
+                <!-- <li class="hover-card"><img class="poster" :src=" 'https://image.tmdb.org/t/p/w342/' + singleItem.poster_path" alt=""></li> -->
+                <!-- <li><p>Titolo:{{ singleItem.title }}</p></li> -->
+
+                <!-- <li><p>Titolo originale:{{ singleItem.original_title }}</p></li> -->
+                <li><img class="flag" :src="singleItem.original_language + '.png'" alt=""></li>
+                <!-- <li><img class="poster" :src=" 'https://image.tmdb.org/t/p/w342/' + singleItem.poster_path" alt=""></li> -->
+                <li id="stars">
+                    <span>Voto:</span>
+                    <span v-for="icon in rating">
+                        <font-awesome-icon :icon="['fas', 'star']" />
+                    </span>
+                    <span v-for="white in whiteStar">
+                        <font-awesome-icon :icon="['far', 'star']" />
+                    </span>
+                </li>
+                <li>
+                    <p>Overview:{{ singleItem.overview }}</p>
+                </li>
+            </ul>
+
+        </div>
+
+
     </div>
 
 
@@ -79,12 +86,15 @@ export default {
 
 <style lang="scss" scoped>
 .card{
-    width: 342px;
-    aspect-ratio: 1/2;
+    width: 346px;
     color: white;
     border: 2px solid white;
-    padding: 15px;
     background-color: black;
+    position: relative;
+
+    &:hover .overlay{
+        opacity: 1;
+    }
     
 
     li {
@@ -113,7 +123,15 @@ li*>{
 #stars{
     flex-direction: row;
 }
-.poster{
-    border: 2px solid white;
+.overlay{
+    position:absolute;
+    top: 0;
+    bottom: 0;
+    background-color: black;
+    opacity: 0;
+    padding: 10px;
 }
+// .poster{
+//     border: 2px solid white;
+// }
 </style>
