@@ -88,6 +88,7 @@ export default {
     cursor: pointer;
     border-radius: 3px;
     overflow: hidden;
+    box-shadow: 0px 0px 20px 2px rgba(0, 0, 0.1);
     &:hover .overlay{
         opacity: 1;
         transition: opacity 300ms ease-in-out;
@@ -151,7 +152,7 @@ export default {
 }
 @media (min-width:768px){
 .col{
-width: 15%;
+width: 19%;
 margin: 5px;
 }
 .logo{
@@ -160,7 +161,7 @@ margin: 5px;
 }
 @media (min-width:992px){
 .col{
-width: 9%;
+width: 15%;
 margin: 5px;
 }
 }

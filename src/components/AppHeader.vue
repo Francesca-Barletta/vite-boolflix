@@ -7,7 +7,9 @@ export default{
       return {
         store: store,
         searchInput: false,
-        isVisible: false
+        isVisible: false,
+        menuVisible: false,
+        generes: false
       }
     },
   methods: {
@@ -51,9 +53,18 @@ export default{
   </div>
   <div class="navbar" :class="isVisible === true ? 'block': 'none'">
     <ul class="nav">
-      <li class="btn">Film</li>
-      <li class="btn">Serie Tv</li>
+      <li class="btn" @click="menuVisible = !menuVisible">Film</li>
+      <li class="btn" @click="menuVisible = !menuVisible">Serie Tv</li>
       <li class="btn">La Mia Lista</li>
+      <li class="btn gnr" :class="menuVisible === true ? 'block': 'none'"  @click="generes = !generes">Generi</li>
+    </ul>
+    <ul class="nav">
+      <li class="btn-sm" :class="generes === true ? 'block': 'none'">Azione</li>
+      <li class="btn-sm" :class="generes === true ? 'block': 'none'">Commedia</li>
+      <li class="btn-sm" :class="generes === true ? 'block': 'none'">Horror</li>
+      <li class="btn-sm" :class="generes === true ? 'block': 'none'">Fantascenza</li>
+      <li class="btn-sm" :class="generes === true ? 'block': 'none'">Romantici</li>
+
     </ul>
   </div>
 
@@ -83,8 +94,10 @@ export default{
   display: flex;
   justify-content: flex-start;
   align-items: center;
+  flex-wrap: wrap;
   color: white;
   gap: 10px;
+  padding:5px 0;
 }
 .btn{
     padding: 3px 10px;
@@ -92,7 +105,19 @@ export default{
     border: 2px solid white;
     font-size: 12px;
     cursor: pointer;
+    &:hover{
+      color: lightgray;
+      border: 2px solid lightgrey;
+    }
   }
+  .btn-sm{
+    font-size: 14px;
+    cursor: pointer;
+    &:hover{
+      color: lightgray;
+    }
+  }
+
 .logo{
   display:none;
 }

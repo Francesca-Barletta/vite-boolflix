@@ -24,7 +24,6 @@ export default {
 
 <style lang="scss" scoped>
 .movie {
-  background-color: black;
   padding-top: 5vh;
   margin: 0 auto;
   width: 90%;
@@ -35,6 +34,7 @@ export default {
   flex-wrap: wrap;
   align-items: center;
   row-gap: 3vh;
+  justify-content: space-evenly;
 }
 
 </style>

@@ -24,7 +24,6 @@ export default {
 
 <style lang="scss" scoped>
 .serie {
-  background-color: black;
   padding-top: 5vh;
   margin: 0 auto;
   width: 90%;

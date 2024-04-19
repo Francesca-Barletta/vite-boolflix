@@ -26,17 +26,12 @@ import AppHeader from './components/AppHeader.vue'
 <template>
    
     <AppHeader/>
- <div class="container">
     <AppMovie/>
     <AppSerie/>  
-  </div>
+  
 
 </template>
 
 <style lang="scss" scoped>
-.container{
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-}
+
 </style>
