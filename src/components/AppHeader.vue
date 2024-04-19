@@ -6,7 +6,8 @@ export default{
     data() {
       return {
         store: store,
-        searchInput: false
+        searchInput: false,
+        isVisible: false
       }
     },
   methods: {
@@ -37,31 +38,62 @@ export default{
 }
 </script>
 <template>
-    <div class="header-container">
-        <img class="logo" src="/boolflix.png" alt="">
-        <img class="logo-sm" src="/logo.png" alt="">
-        <div class="search">   
-            <input class="input-search" type="text" placeholder="inserisci film o serie-tv" v-model.trim="store.userValue" @keyup.enter="search"
-            :class="searchInput === true ? 'inline-block':'none'">
-            <font-awesome-icon :icon="['fas', 'magnifying-glass']" @click="searchInput = !searchInput" 
-            :class="searchInput === true ? 'search-true':'icon'"></font-awesome-icon>/>
-        </div>
-
+  <div class="header">
+    <img class="logo" src="/boolflix.png" alt="">
+    <img class="logo-sm" src="/logo.png" alt="">
+    <div class="search">
+      <input class="input-search" type="text" placeholder="inserisci film o serie-tv" v-model.trim="store.userValue"
+        @keyup.enter="search" :class="searchInput === true ? 'inline-block' : 'none'">
+      <font-awesome-icon :icon="['fas', 'magnifying-glass']" @click="searchInput = !searchInput"
+        :class="searchInput === true ? 'search-true' : 'icon'"></font-awesome-icon>/>
+        <font-awesome-icon class="hamburger" :icon="['fas', 'bars']"  @click="isVisible = !isVisible"/>
     </div>
+  </div>
+  <div class="navbar" :class="isVisible === true ? 'block': 'none'">
+    <ul class="nav">
+      <li class="btn">Film</li>
+      <li class="btn">Serie Tv</li>
+      <li class="btn">La Mia Lista</li>
+    </ul>
+  </div>
 
 </template>
 
 <style lang="scss" scoped>
-.header-container{
+.hamburger{
+  color: white;
+  font-size: 25px;
+  cursor: pointer;
+}
+.header{
   margin: 0 auto;
   text-align: center;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: black;
-  padding: 30px;
+  padding: 30px 0;
   width: 90%;
 }
+.navbar{
+  margin: 0 auto;
+  width: 90%;
+  
+}
+.nav{
+  text-align: center;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  color: white;
+  gap: 10px;
+}
+.btn{
+    padding: 3px 10px;
+    border-radius: 20px;
+    border: 2px solid white;
+    font-size: 12px;
+    cursor: pointer;
+  }
 .logo{
   display:none;
 }
@@ -70,6 +102,9 @@ export default{
 }
 .none{
   display:none;
+}
+.block{
+  display:block;
 }
 .input-true{
  font-size: 20px;
@@ -83,6 +118,7 @@ export default{
   cursor: pointer;
   top: 50%;
   left: 20px;
+  margin-bottom:3px;
  
 }
 .search{
@@ -134,12 +170,18 @@ export default{
   display: inline-block;
   width: 200px;
 }
+.hamburger{
+  display:none;
+}
 
 }
 
 @media (min-width:992px){
 .input-search{
   width: 300px;
+}
+.hamburger{
+  display:none;
 }
 }
 </style>

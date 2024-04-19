@@ -38,7 +38,7 @@ export default {
 
 <template>
 
-  <div :class="singleItem.poster_path !== null ? 'col-10':'none'">
+  <div :class="singleItem.poster_path !== null ? 'col':'none'">
     <div class="card">
         <img class="logo" src="/logo.png" alt="">
         <img  class="poster" :src="'https://image.tmdb.org/t/p/w342/' + singleItem.poster_path" alt="">
@@ -145,8 +145,20 @@ export default {
 .none{
     display: none;
 }
-.col-10{
-  width: 9%;
+.col{
+  width: 29%;
   margin: 5px;
+}
+@media (min-width:768px){
+.col{
+width: 15%;
+margin: 5px;
+}
+}
+@media (min-width:992px){
+.col{
+width: 9%;
+margin: 5px;
+}
 }
 </style>
