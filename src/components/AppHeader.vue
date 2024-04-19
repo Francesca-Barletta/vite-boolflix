@@ -6,6 +6,7 @@ export default{
     data() {
       return {
         store: store,
+        searchInput: false
       }
     },
   methods: {
@@ -38,9 +39,12 @@ export default{
 <template>
     <div class="header-container">
         <img class="logo" src="/boolflix.png" alt="">
+        <img class="logo-sm" src="/logo.png" alt="">
         <div class="search">   
-            <input class="input-search" type="text" placeholder="inserisci film o serie-tv" v-model.trim="store.userValue" @keyup.enter="search">
-            <font-awesome-icon class="icon" :icon="['fas', 'magnifying-glass']" />
+            <input class="input-search" type="text" placeholder="inserisci film o serie-tv" v-model.trim="store.userValue" @keyup.enter="search"
+            :class="searchInput === true ? 'inline-block':'none'">
+            <font-awesome-icon :icon="['fas', 'magnifying-glass']" @click="searchInput = !searchInput" 
+            :class="searchInput === true ? 'search-true':'icon'"></font-awesome-icon>/>
         </div>
 
     </div>
@@ -59,36 +63,83 @@ export default{
   width: 90%;
 }
 .logo{
-  width:250px;
+  display:none;
+}
+.logo-sm{
+  width:30px;
+}
+.none{
+  display:none;
+}
+.input-true{
+ font-size: 20px;
+}
+.inline-block{
+  display:inline-block;
 }
 .icon{
   color: white;
-  position: absolute;
+  font-size: 20px;
+  cursor: pointer;
   top: 50%;
   left: 20px;
-  transform: translateY(-50%);
-  pointer-events:none;
+ 
 }
 .search{
   position: relative;
+}
+.search-true{
+  position: absolute;
+  transform: translateY(-50%);
+  font-size: 20px;
+  top: 50%;
+  left: 20px;
+  color: white;
+  cursor: pointer;
 }
 .input-search{
   outline: none;
   border: none;
   background-color: grey;
-  width: 300px;
+  width: 150px;
   height: 30px;
   padding-left: 50px;
   padding-right: 10px;
   caret-color: white;
   color: white;
+
   &::placeholder{
     color: white;
   }
   
+}
 
-  &:focus-visible{
-  outline: none;
+@media (min-width:768px){
+  .logo-sm{
+    display:none;
+  }
+
+  .logo{
+    display:block;
+    max-width: 250px;
+  }
+
+ .icon{
+  position: absolute;
+  transform: translateY(-50%);
+  pointer-events: none;
+ }
+
+  .input-search{
+  display: inline-block;
+  width: 200px;
+}
+
+}
+
+@media (min-width:992px){
+.input-search{
+  width: 300px;
 }
 }
 </style>
