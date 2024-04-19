@@ -23,16 +23,13 @@ export default {
 </template>
 
 <style lang="scss" scoped>
+@use '../style/partials/mixins' as*;
+
 .serie {
-  padding-top: 5vh;
-  margin: 0 auto;
-  width: 90%;
+@include container-row-mixin;
 }
-.row {
-  width: 100%;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  row-gap: 3vh;
+.row{
+@include row-evenly-mixin;
 }
+
 </style>

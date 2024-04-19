@@ -23,18 +23,12 @@ export default {
 </template>
 
 <style lang="scss" scoped>
+@use '../style/partials/mixins' as*;
 .movie {
-  padding-top: 5vh;
-  margin: 0 auto;
-  width: 90%;
+@include container-row-mixin;
 }
 .row{
-  width: 100%;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  row-gap: 3vh;
-  justify-content: space-evenly;
+@include row-evenly-mixin;
 }
 
 </style>

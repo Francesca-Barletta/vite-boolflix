@@ -71,52 +71,23 @@ export default{
 </template>
 
 <style lang="scss" scoped>
+@use '../style/partials/mixins' as*;
+
 .hamburger{
   color: white;
   font-size: 25px;
   cursor: pointer;
 }
 .header{
-  margin: 0 auto;
-  text-align: center;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 30px 0;
-  width: 90%;
+  @include header-mixin
 }
 .navbar{
   margin: 0 auto;
   width: 90%;
 }
 .nav{
-  text-align: center;
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  flex-wrap: wrap;
-  color: white;
-  gap: 10px;
-  padding:5px 0;
+  @include nav-mixin
 }
-.btn{
-    padding: 3px 10px;
-    border-radius: 20px;
-    border: 2px solid white;
-    font-size: 12px;
-    cursor: pointer;
-    &:hover{
-      color: lightgray;
-      border: 2px solid lightgrey;
-    }
-  }
-  .btn-sm{
-    font-size: 14px;
-    cursor: pointer;
-    &:hover{
-      color: lightgray;
-    }
-  }
 
 .logo{
   display:none;
@@ -137,40 +108,16 @@ export default{
   display:inline-block;
 }
 .icon{
-  color: white;
-  font-size: 20px;
-  cursor: pointer;
-  top: 50%;
-  left: 20px;
-  margin-bottom:3px;
- 
+  @include icon-mixin-sm
 }
 .search{
   position: relative;
 }
 .search-true{
-  position: absolute;
-  transform: translateY(-50%);
-  font-size: 20px;
-  top: 55%;
-  left: 5px;
-  color: white;
-  cursor: pointer;
+  @include search-true-mixin
 }
 .input-search{
-  outline: none;
-  border: none;
-  background-color: grey;
-  width: 150px;
-  height: 30px;
-  padding-left: 34px;
-  padding-right: 10px;
-  caret-color: white;
-  color: white;
-
-  &::placeholder{
-    color: white;
-  }
+  @include input-search-sm-mixin
   
 }
 
@@ -185,18 +132,11 @@ export default{
   }
 
   .icon {
-    position: absolute;
-    transform: translateY(-50%);
-    pointer-events: none;
-    top: 55%;
-  left: 5px;
+    @include icon-mixin-md
   }
 
   .input-search {
-    display: inline-block;
-    width: 200px;
-    padding-left: 34px;
-    padding-right: 10px;
+    @include input-search-md-mixin
   }
 
   .hamburger {
@@ -212,9 +152,7 @@ export default{
 
 @media (min-width:992px) {
   .input-search {
-    width: 300px;
-    padding-left: 34px;
-    padding-right: 10px;
+    @include input-search-lg-mixin
   }
 
   .hamburger {

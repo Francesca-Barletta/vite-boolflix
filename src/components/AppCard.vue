@@ -80,68 +80,29 @@ export default {
 </template>
 
 <style lang="scss" scoped>
+@use '../style/partials/mixins' as*;
 .card{
-    width: 100%;
-    aspect-ratio: 1/1.5;
-    color: white;
-    position: relative;
-    cursor: pointer;
-    border-radius: 3px;
-    overflow: hidden;
-    box-shadow: 0px 0px 20px 2px rgba(0, 0, 0.1);
-    &:hover .overlay{
-        opacity: 1;
-        transition: opacity 300ms ease-in-out;
-    }
-    
-
-    li {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-           
-        }
+    @include card-mixin
 }
 .none{
     display: none;
 }
 .logo{
-    position: absolute;
-    width: 12px;
-    top: 10px;
-    left: 10px;
+    @include logo-card-mixin
+
 }
 .flag{
     width: 20px;
-}
-.movie{
-    background-color: blueviolet;
-}
-.serie{
-    background-color: darkmagenta;
 }
 #stars{
     flex-direction: row;
     color: yellow;
 }
 .overlay{
-    position:absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background-color: black;
-    font-size: 11px;
-    padding: 5px;
-    border-radius: 4px;
-    opacity: 0;
+@include overlay-mixin
 }
 .poster{
-    width: 100%;
-    height: 100%;
-    display: inline-block;
-    object-fit: cover;
-    border-radius: 4px;
+    @include poster-mixin
 }
 .none{
     display: none;
