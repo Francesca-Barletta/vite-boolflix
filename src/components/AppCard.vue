@@ -106,7 +106,7 @@ export default {
 }
 .logo{
     position: absolute;
-    width: 16px;
+    width: 12px;
     top: 10px;
     left: 10px;
 }
@@ -146,13 +146,16 @@ export default {
     display: none;
 }
 .col{
-  width: 29%;
+  width: 47%;
   margin: 5px;
 }
 @media (min-width:768px){
 .col{
 width: 15%;
 margin: 5px;
+}
+.logo{
+    width: 16px;
 }
 }
 @media (min-width:992px){

@@ -77,7 +77,6 @@ export default{
 .navbar{
   margin: 0 auto;
   width: 90%;
-  
 }
 .nav{
   text-align: center;
@@ -128,8 +127,8 @@ export default{
   position: absolute;
   transform: translateY(-50%);
   font-size: 20px;
-  top: 50%;
-  left: 20px;
+  top: 55%;
+  left: 5px;
   color: white;
   cursor: pointer;
 }
@@ -139,7 +138,7 @@ export default{
   background-color: grey;
   width: 150px;
   height: 30px;
-  padding-left: 50px;
+  padding-left: 34px;
   padding-right: 10px;
   caret-color: white;
   color: white;
@@ -150,38 +149,51 @@ export default{
   
 }
 
-@media (min-width:768px){
-  .logo-sm{
-    display:none;
+@media (min-width:768px) {
+  .logo-sm {
+    display: none;
   }
 
-  .logo{
-    display:block;
+  .logo {
+    display: block;
     max-width: 250px;
   }
 
- .icon{
-  position: absolute;
-  transform: translateY(-50%);
-  pointer-events: none;
- }
+  .icon {
+    position: absolute;
+    transform: translateY(-50%);
+    pointer-events: none;
+    top: 55%;
+  left: 5px;
+  }
 
-  .input-search{
-  display: inline-block;
-  width: 200px;
-}
-.hamburger{
-  display:none;
-}
+  .input-search {
+    display: inline-block;
+    width: 200px;
+    padding-left: 34px;
+    padding-right: 10px;
+  }
+
+  .hamburger {
+    display: none;
+  }
+
+  .navbar {
+    padding: 0 10px;
+    display: block;
+  }
 
 }
 
-@media (min-width:992px){
-.input-search{
-  width: 300px;
-}
-.hamburger{
-  display:none;
-}
+@media (min-width:992px) {
+  .input-search {
+    width: 300px;
+    padding-left: 34px;
+    padding-right: 10px;
+  }
+
+  .hamburger {
+    display: none;
+  }
 }
 </style>

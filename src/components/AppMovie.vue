@@ -26,13 +26,13 @@ export default {
 .movie {
   background-color: black;
   padding-top: 5vh;
-  margin-left: auto;
+  margin: 0 auto;
+  width: 90%;
 }
 .row{
   width: 100%;
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
   align-items: center;
   row-gap: 3vh;
 }

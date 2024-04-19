@@ -26,15 +26,14 @@ export default {
 .serie {
   background-color: black;
   padding-top: 5vh;
-  margin-bottom: 5vh;
+  margin: 0 auto;
+  width: 90%;
 }
-.row{
+.row {
   width: 100%;
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
   align-items: center;
   row-gap: 3vh;
 }
-
 </style>
