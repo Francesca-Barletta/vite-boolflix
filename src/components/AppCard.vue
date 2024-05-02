@@ -16,21 +16,21 @@ export default {
     },
     methods: {
 
-        ratingFunction() {
-            const rate = (parseInt(this.singleItem.vote_average) / 2).toFixed(0);
-            // itero sul voto
-            for (let i = 1; i <= rate; i++) {
-                this.rating.push('+');
-            }
+        // ratingFunction() {
+        //     const rate = Math.floor(this.singleItem.vote_average/ 2);
+        //     // itero sul voto
+        //     for (let i = 1; i <= rate; i++) {
+        //         this.rating.push('+');
+        //     }
         
         // this.fullStars = (parseInt(this.singleItem.vote_average) / 2).toFixed(0);
         // console.log('stelle piene',this.fullStars)
-        this.emptyStars = this.emptyStars - rate;
+        // this.emptyStars = this.emptyStars - rate;
         // console.log('stelle vuote',this.emptyStars)
-        }
+        // }
     },
     created() {
-        this.ratingFunction()
+        // this.ratingFunction()
     }
 }
 </script>
@@ -54,11 +54,9 @@ export default {
                     </li>
                     <li id="stars">
                         <span>Voto:</span>
-                        <span v-for="icon in rating">
-                            <font-awesome-icon :icon="['fas', 'star']" />
-                        </span>
-                        <span v-for="white in emptyStars">
-                            <font-awesome-icon :icon="['far', 'star']" />
+                        <span>
+                            <font-awesome-icon v-for="icon in singleItem.vote" :key="icon" :icon="['fas', 'star']" />
+                            <font-awesome-icon v-for="icon in 5 - singleItem.vote" :key="icon" :icon="['far', 'star']" />
                         </span>
                     </li>
                     <li>

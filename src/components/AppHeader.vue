@@ -22,7 +22,10 @@ export default{
             const data = res.data;
             console.log(data.results)
             const results = data.results;
-            this.store.movies = results;
+            this.store.movies = results.map((el)=> {
+              el.vote = Math.floor(el.vote_average / 2)
+              return el
+            })
             //  console.log(store.movies)
           })
           axios.get(`https://api.themoviedb.org/3/search/tv?api_key=72624c339062fe86b275b999ded604cf&query=${store.userValue}`)
@@ -31,7 +34,10 @@ export default{
             const data = res.data;
             console.log(data.results)
             const results = data.results;
-            this.store.tvSeries = results;
+            this.store.tvSeries = results.map((el)=> {
+              el.vote = Math.floor(el.vote_average / 2)
+              return el
+            })
           })
       }
 
