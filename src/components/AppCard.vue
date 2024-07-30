@@ -6,16 +6,25 @@ export default {
         return {
             store: store,
             rating: [],
-            emptyStars: 5
+            emptyStars: 5,
+            // favourite:[]
         }
     },
     props: {
         singleItem: Object,
-
+        // isFavorite: {
+        //     type: Boolean,
+        //     required: true
+        // }
 
     },
     methods: {
-
+        toggleFavorite(singleItem) {
+          this.store.toggleFavorite(singleItem);
+        },
+        isInFavorite(singleItem) {
+            return this.store.myList.some(fav=> fav.id === singleItem.id)
+        },
         // ratingFunction() {
         //     const rate = Math.floor(this.singleItem.vote_average/ 2);
         //     // itero sul voto
@@ -40,6 +49,7 @@ export default {
     <div :class="singleItem.poster_path !== null ? 'col' : 'none'">
         <div class="card">
             <img class="logo" src="/logo.png" alt="">
+            <!-- <span class="save">&hearts;</span> -->
             <img class="poster" :src="'https://image.tmdb.org/t/p/w342/' + singleItem.poster_path" alt="">
             <div class="overlay">
                 <ul>
@@ -59,11 +69,14 @@ export default {
                             <font-awesome-icon v-for="icon in 5 - singleItem.vote" :key="icon" :icon="['far', 'star']" />
                         </span>
                     </li>
-                    <li>
+                    <!-- <li>
                         <img class="flag" :src="singleItem.original_language + '.png'" alt="">
-                    </li>
+                    </li> -->
                     <li>
                         <p>Overview:{{ singleItem.overview }}</p>
+                    </li>
+                    <li>
+                        <span @click="toggleFavorite(singleItem)" :class="isInFavorite(singleItem)? 'saved': 'save'">&hearts;</span>
                     </li>
                 </ul>
 
@@ -89,6 +102,36 @@ export default {
 .logo{
     @include logo-card-mixin
 
+}
+.save{
+    position: absolute;
+    font-size:20px;
+    color: white;
+    bottom:10px;
+    right:10px;
+    padding:5px 10px;
+    background-color: red;
+    border-radius: 15px;
+    &:hover{
+        border: 2px solid white;
+        bottom: 8px;
+        right: 8px;
+    }
+}
+.saved{
+    position: absolute;
+    font-size:20px;
+    color: red;
+    bottom:10px;
+    right:10px;
+    padding:5px 10px;
+    background-color: white;
+    border-radius: 15px;
+    &:hover{
+        border: 2px solid red;
+        bottom: 8px;
+        right: 8px;
+    }
 }
 .flag{
     width: 20px;

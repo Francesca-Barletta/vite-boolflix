@@ -8,16 +8,19 @@ export default {
     data() {
       return {
         store: store,
+        
+        
       }
     },
-
+   
 }
 </script>
 <template>
 
-  <div class="movie">
+  <div v-if="this.store.showFavorites" class="movie">
+    <h2>La Mia Lista</h2>
     <div class="row">
-        <AppCard  v-for="(movie, i) in store.movies" :key="i" :singleItem="movie" />
+        <AppCard  v-for="(item, i) in store.myList" :key="i" :singleItem="item" />
     </div>
 
   </div>
@@ -31,5 +34,15 @@ export default {
 .row{
 @include row-evenly-mixin;
 }
+h2{
+  color:white;
+}
 
+.none {
+  display: none;
+}
+
+.block {
+  display: block;
+}
 </style>
