@@ -100,6 +100,9 @@ export default {
       this.$emit('toggle-favorites-view', this.store.showFavorites);
       console.log(this.store.myList);
       console.log(this.store.showFavorites);
+      if(this.store.showFavorites === false){
+        this.fetchPopular();
+      }
 
       
     },
