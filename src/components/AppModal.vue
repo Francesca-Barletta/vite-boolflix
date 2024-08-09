@@ -14,9 +14,6 @@ export default {
         },
         item: Object
     },
-    methods: {
-    
-    },
 
 }
 </script>
@@ -37,8 +34,8 @@ export default {
                 <font-awesome-icon v-for="icon in 5 - item.vote" :key="icon" :icon="['far', 'star']" />
             </span>
           
-            <button v-if="this.store.isInFavorite(item)" class="action favorite" @click="$emit('favorite')">Rimuovi dalla tua lista</button>
-            <button v-else class="action favorite" @click="$emit('favorite')">Aggiungi alla tua lista</button>
+            <button v-if="this.store.isInFavorite(item)" class="action favorite" @click="this.store.toggleFavorite(item)">Rimuovi dalla tua lista</button>
+            <button v-else class="action favorite" @click="this.store.toggleFavorite(item)">Aggiungi alla tua lista</button>
 
 
             <button class="action exit" @click="$emit('exit')">Esci</button>

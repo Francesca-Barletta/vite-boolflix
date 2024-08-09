@@ -74,7 +74,7 @@ export default {
         </div>
       
     </div>
- <AppModal :open="isOpen" :item="singleItem" @exit="isOpen = false" @favorite="this.store.toggleFavorite(singleItem)"/>
+ <AppModal :open="isOpen" :item="singleItem" @exit="isOpen = false" />
 
 </template>
 
