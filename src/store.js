@@ -1,5 +1,5 @@
 import { reactive } from 'vue'
-export const store = {
+export const store = reactive ({
     userValue:'',
     movies: [],
     tvSeries: [],
@@ -143,6 +143,7 @@ export const store = {
 		},
 	],                                  
 	isInFavorite(item) {
+		console.log('isInFavorite',this.myList.some(fav => fav.id === item.id))
 		return this.myList.some(fav => fav.id === item.id);
 	},
 	toggleFavorite(item) {
@@ -155,7 +156,7 @@ export const store = {
 		this.saveFavorites();
 	  },
 
-	  saveFavorites() {
+	saveFavorites() {
 		localStorage.setItem('myList', JSON.stringify(this.myList));
 	  }
-};
+});

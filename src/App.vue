@@ -33,8 +33,8 @@ import AppFavorite from './components/AppFavorite.vue'
 <template>
 
   <AppHeader @toggleFavoritesView="handleToggleFavoritesView" />
-  <AppFavorite v-if="store.showFavorites && store.userValue == '' && store.movies.length == 0 && store.tvSeries.length == 0 "/>
-  <div v-else="!store.showFavorites || store.userValue !== ''">
+  <AppFavorite class="mb" v-if="store.showFavorites && store.userValue == '' && store.movies.length == 0 && store.tvSeries.length == 0 "/>
+  <div class="mb" v-else="!store.showFavorites || store.userValue !== ''">
     <AppMovie />
     <AppSerie />
   </div>
@@ -43,5 +43,7 @@ import AppFavorite from './components/AppFavorite.vue'
 </template>
 
 <style lang="scss" scoped>
-
+.mb{
+  margin-bottom: 50px;
+}
 </style>

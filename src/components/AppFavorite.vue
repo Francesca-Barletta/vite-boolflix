@@ -18,7 +18,7 @@ export default {
 <template>
 
   <div v-if="this.store.showFavorites" class="movie">
-    <h2>La Mia Lista</h2>
+    <h2 class="ms">La Mia Lista</h2>
     <div class="row">
         <AppCard  v-for="(item, i) in store.myList" :key="i" :singleItem="item" />
     </div>
@@ -44,5 +44,10 @@ h2{
 
 .block {
   display: block;
+}
+.ms{
+  user-select: none;
+  margin-left: 15px;
+  margin-bottom: 30px;
 }
 </style>

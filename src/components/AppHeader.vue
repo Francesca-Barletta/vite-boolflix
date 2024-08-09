@@ -11,7 +11,7 @@ export default {
       filmGenres: false,
       tvSeriesGenres: false,
       genreId: 0,
-      // showFavorites: false
+      
 
     }
   },
@@ -66,6 +66,7 @@ export default {
       this.store.tvSeries = [];
       this.store.showFavorites = false;                           
       this.activeGenre(id);
+
       axios.get(`https://api.themoviedb.org/3/discover/movie?api_key=72624c339062fe86b275b999ded604cf&with_genres=${this.genreId}`)
       .then((res)=> {
 
@@ -130,6 +131,7 @@ export default {
     }
  
   },
+
   mounted() {
     this.fetchPopular();
   }
@@ -144,25 +146,29 @@ export default {
       <input class="input-search" type="text" placeholder="inserisci film o serie-tv" v-model.trim="store.userValue"
         @keyup.enter="search" :class="searchInput === true ? 'inline-block' : 'none'">
       <font-awesome-icon :icon="['fas', 'magnifying-glass']" @click="searchInput = !searchInput"
-        :class="searchInput === true ? 'search-true' : 'icon'"></font-awesome-icon>/>
+        :class="searchInput === true ? 'search-true' : 'icon'"></font-awesome-icon>
       <font-awesome-icon class="hamburger" :icon="['fas', 'bars']" @click="isVisible = !isVisible" />
     </div>
   </div>
   <div class="navbar" :class="isVisible === true ? 'block' : 'none'">
     <ul class="nav">
-      <li class="btn" @click="filmGenres = !filmGenres" :class="tvSeriesGenres === true ? 'none' : 'block'">Film</li>
-      <li class="btn" @click="tvSeriesGenres = !tvSeriesGenres" :class="filmGenres === true ? 'none' : 'block'">Serie Tv</li>
-      <li class="btn" @click="toggleFavoritesView">La Mia Lista</li>
-    </ul>
-    <ul class="nav">
+      <li>
+        <ul class="flex">
+          <li class="btn" @click="filmGenres = !filmGenres" :class="tvSeriesGenres === true ? 'none' : 'block'">Film</li>
+          <li class="btn" @click="tvSeriesGenres = !tvSeriesGenres" :class="filmGenres === true ? 'none' : 'block'">Serie Tv</li>
+          <li class="btn" @click="toggleFavoritesView">La Mia Lista</li>
+        </ul>
+      </li>
       <li class="btn" @click="clear">Indietro</li>
     </ul>
-    <ul class="nav" :class="filmGenres === true ? 'block' : 'none'" >
-      <li class="btn-sm" v-for="(genre, i) in store.filmGenres" :key="i" @click="movieGenres(genre.id)">{{ genre.name }}</li>
+    
+    
+    <ul class="flex-column" :class="filmGenres === true ? 'flex' : 'none'" >
+      <li class="genre-btn" v-for="(genre, i) in store.filmGenres" :key="i" @click="movieGenres(genre.id)" >{{ genre.name }}</li>
 
     </ul>
-    <ul class="nav" :class="tvSeriesGenres === true ? 'block' : 'none'">
-      <li class="btn-sm" v-for="(genre, i) in store.seriesGenres" :key="i" @click="tvGenres(genre.id)">{{ genre.name }}</li>
+    <ul class="flex-column" :class="tvSeriesGenres === true ? 'flex' : 'none'">
+      <li class="genre-btn" v-for="(genre, i) in store.seriesGenres" :key="i" @click="tvGenres(genre.id)">{{ genre.name }}</li>
 
     </ul>
   </div>
@@ -200,11 +206,31 @@ export default {
   width: 30px;
   cursor: pointer;
 }
-
+.flex-column{
+  
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.genre-btn{
+  user-select: none;
+  cursor: pointer;
+  color:white;
+  &:hover{
+    color:lightgray;
+  }
+  
+}
+.selected{
+  color:red;
+}
 .none {
   display: none;
 }
-
+.flex{
+  display: flex;
+  gap:5px;
+}
 .block {
   display: block;
 }

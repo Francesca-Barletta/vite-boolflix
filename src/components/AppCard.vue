@@ -1,45 +1,35 @@
 <script>
+import AppModal from './AppModal.vue';
 import { store } from '../store.js'
 
 export default {
+    components: {
+        AppModal
+    },
     data() {
         return {
             store: store,
             rating: [],
             emptyStars: 5,
-            // favourite:[]
+            isOpen: false,
         }
     },
     props: {
         singleItem: Object,
-        // isFavorite: {
-        //     type: Boolean,
-        //     required: true
-        // }
+      
 
     },
     methods: {
-        toggleFavorite(singleItem) {
-          this.store.toggleFavorite(singleItem);
-        },
-        isInFavorite(singleItem) {
-            return this.store.myList.some(fav=> fav.id === singleItem.id)
-        },
-        // ratingFunction() {
-        //     const rate = Math.floor(this.singleItem.vote_average/ 2);
-        //     // itero sul voto
-        //     for (let i = 1; i <= rate; i++) {
-        //         this.rating.push('+');
-        //     }
-        
-        // this.fullStars = (parseInt(this.singleItem.vote_average) / 2).toFixed(0);
-        // console.log('stelle piene',this.fullStars)
-        // this.emptyStars = this.emptyStars - rate;
-        // console.log('stelle vuote',this.emptyStars)
-        // }
+     
+        openModal() {
+            this.isOpen = true;
+            console.log(this.singleItem);
+        }, 
+     
+
     },
     created() {
-        // this.ratingFunction()
+        
     }
 }
 </script>
@@ -47,11 +37,11 @@ export default {
 <template>
 
     <div :class="singleItem.poster_path !== null ? 'col' : 'none'">
-        <div class="card">
+        <div class="card" @click="openModal">
             <img class="logo" src="/logo.png" alt="">
-            <!-- <span class="save">&hearts;</span> -->
+           
             <img class="poster" :src="'https://image.tmdb.org/t/p/w342/' + singleItem.poster_path" alt="">
-            <div class="overlay">
+            <!-- <div class="overlay">
                 <ul>
                     <li>
                         <p v-if="singleItem.name">Titolo:{{ singleItem.name }}</p>
@@ -69,9 +59,9 @@ export default {
                             <font-awesome-icon v-for="icon in 5 - singleItem.vote" :key="icon" :icon="['far', 'star']" />
                         </span>
                     </li>
-                    <!-- <li>
+                    <li>
                         <img class="flag" :src="singleItem.original_language + '.png'" alt="">
-                    </li> -->
+                    </li>
                     <li>
                         <p>Overview:{{ singleItem.overview }}</p>
                     </li>
@@ -80,14 +70,11 @@ export default {
                     </li>
                 </ul>
 
-            </div>
+            </div> -->
         </div>
-        <!-- <p>{{ singleItem.genre_ids }}</p>
-        <div v-for="genere in singleItem.genre_ids" :key="genere.id">{{ genere }}>
-        <p ></p>
-        </div> -->
+      
     </div>
-
+ <AppModal :open="isOpen" :item="singleItem" @exit="isOpen = false" @favorite="this.store.toggleFavorite(singleItem)"/>
 
 </template>
 
